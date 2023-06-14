@@ -63,6 +63,7 @@ async function runSample(msg, projectId = 'ecommmerce-daoj') {
     return result.fulfillmentText;
 }
 
+// function to change date format
 const changeDateFormat = (shipmentDate)=>{
     
     const date = new Date(shipmentDate);
@@ -78,6 +79,7 @@ const changeDateFormat = (shipmentDate)=>{
     return formattedDate;
 }
 
+// API to handle WebRequest from dialogFlow
 app.post('/webhook', async (req, res) => {
 
     const parameterValue = req.body.queryResult.parameters["orderId"];
@@ -130,6 +132,7 @@ app.post('/webhook', async (req, res) => {
     }
 
 })
+// End of this API
 
 app.post('/chatbot', (req, res) => {
     runSample(req.body.msg).then(data => {
